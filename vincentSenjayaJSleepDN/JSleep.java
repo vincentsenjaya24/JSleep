@@ -4,14 +4,23 @@ package vincentSenjayaJSleepDN;
 
 public class JSleep
 {
+    
     public static void main(String[] args){
-        System.out.println("test " + getHotelName());
+        Room test = createRoom();
+        System.out.println(test.name);
+        System.out.println(test.size);
+        System.out.println(test.price.price);
+        System.out.println(test.facility);
     }
     
     public static int getHotelId(){
         return 0;
     }
-    
+    public static Room createRoom(){
+        Price price = new Price(100000,5);
+        Room room = new Room("hotel", 30, price, Facility.AC);
+        return room;
+    }
     public static String getHotelName(){
         return "hotel";
     }
@@ -21,7 +30,7 @@ public class JSleep
     }
     
     public static float getDiscountPercentage(int beforeDiscount, int afterDiscount){
-        if (beforeDiscount < afterDiscount || afterDiscount == 0) {
+        if (beforeDiscount < afterDiscount) {
             return 0.0f;
         }
         
