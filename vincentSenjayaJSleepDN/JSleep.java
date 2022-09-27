@@ -6,9 +6,12 @@ public class JSleep
 {
     
     public static void main(String[] args){
+        
         Payment testRoom = new Payment(1,2,3,"20:30",203,"Monday","Sunday");
         Invoice testInvoice = new Invoice(1,2,3,"20:30");
+        System.out.println("Print payment: \n");
         System.out.println(testRoom.print());
+        System.out.println("\nPrint invoice: ");
         System.out.println(testInvoice.print());
     }
     
