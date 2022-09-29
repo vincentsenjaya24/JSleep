@@ -12,9 +12,13 @@ public class JSleep
         Account testAccount = new Account(1, "Bob", "bob@gmail.com", "bob");
         Rating testRating = new Rating();
         System.out.println(testComplain.toString());
+        System.out.println("\n");
         System.out.println(testRoom.toString());
+        System.out.println("\n");
         System.out.println(testAccount.toString());
+        System.out.println("\n");
         System.out.println(testPrice.toString());
+        System.out.println("\n");
         System.out.println(testRating.toString());
     }
     

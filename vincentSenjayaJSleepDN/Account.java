@@ -20,6 +20,6 @@ public class Account extends Serializable
     }
     
     public String toString(){
-        return (String)("Name: " + name + "\nEmail: " + email + "\nPassword: " + password);
+        return (String)("Name: " + name + "\nEmail: " + email + "\nPassword: " + password + "\nID: " + id);
     }
 }
