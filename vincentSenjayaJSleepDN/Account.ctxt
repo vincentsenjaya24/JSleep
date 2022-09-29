@@ -3,4 +3,6 @@ comment0.target=Account
 comment0.text=\ \r\n\ \ \ Class\ Account\ merupakan\ subclass\ dari\ Serializable\r\n\ \ \ @author\ VincentSenjaya\r\n\ \ \ @param\ Parameter\ merupakan\ nama,\ email,\ dan\ password\r\n\ \ \ \r\n
 comment1.params=id\ name\ email\ password
 comment1.target=Account(int,\ java.lang.String,\ java.lang.String,\ java.lang.String)
-numComments=2
+comment2.params=
+comment2.target=java.lang.String\ toString()
+numComments=3

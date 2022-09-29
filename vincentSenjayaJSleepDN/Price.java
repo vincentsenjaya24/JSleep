@@ -19,4 +19,7 @@ public class Price
 
     }
     
+    public String toString(){
+        return (String)("Price: " + price + "\nDiscount: " + discount);
+    }
 }

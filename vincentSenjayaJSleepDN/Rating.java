@@ -15,7 +15,9 @@ public class Rating
         this.total = rating;
         this.count += 1;
     }
-    
+    public String toString(){
+        return (String)("Total: " + total + "\nCount: " + count);
+    }
     public long getCount(){
         return count;
     }
