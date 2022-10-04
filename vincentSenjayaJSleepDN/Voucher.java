@@ -9,12 +9,13 @@ public class Voucher extends Serializable implements FileParser
    public int code;
    public double minimum;
    private boolean used;
+   
    public Object write(){
         return 0;
-    }
-    public boolean read(String a){
+   }
+   public boolean read(String a){
         return false;
-    }
+   }
    public Voucher(int id, String name, int code, Type type, boolean used, double minimum, double cut){
        super(id);
        this.name = name;
