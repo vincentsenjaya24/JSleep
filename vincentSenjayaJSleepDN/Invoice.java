@@ -1,11 +1,11 @@
 package vincentSenjayaJSleepDN;
-
+import java.util.*;
 
 public class Invoice extends Serializable
 {
    public int buyerId;
    public int renterId;
-   public String time;
+   public Calendar time;
    public PaymentStatus status;
    public RoomRating rating;
    public Account buyer;
@@ -19,22 +19,22 @@ public class Invoice extends Serializable
        FAILED,WAITING,SUCCESS
    }
    
-   protected Invoice(int id, int buyerId, int renterId, String time){
+   protected Invoice(int id, int buyerId, int renterId){
        super(id);
        this.buyerId = buyerId;
        this.renterId = buyerId;
-       this.time = time;
        this.rating = RoomRating.NONE;
        this.status = PaymentStatus.WAITING;
+       this.time = Calendar.getInstance();
    }
    
-   public Invoice(int id, Account buyer, Renter renter, String time){
+   public Invoice(int id, Account buyer, Renter renter){
        super(id);
        this.buyer = buyer;
        this.renter = renter;
-       this.time = time;
        this.rating = RoomRating.NONE;
        this.status = PaymentStatus.WAITING;
+       this.time = Calendar.getInstance();
    }
    
    public String print(){

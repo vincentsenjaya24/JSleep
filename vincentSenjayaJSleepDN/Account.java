@@ -7,11 +7,19 @@ package vincentSenjayaJSleepDN;
    @param Parameter merupakan nama, email, dan password
    
 */
-public class Account extends Serializable
+public class Account extends Serializable implements FileParser
 {
     public String name;
     public String email;
     public String password;
+    
+    public Object write(){
+        return 0;
+    }
+    public boolean read(String a){
+        return false;
+    }
+    
     public Account(int id, String name, String email, String password){
         super(id);
         this.name = name;
