@@ -18,7 +18,7 @@ public class Validate
         }
         if (less == false) {
             for (int i = 0; i < list.length; i++){
-                if (list[i].price >= value){
+                if (list[i].price > value){
                     arrlist.add(list[i].price);
                 }
             }
