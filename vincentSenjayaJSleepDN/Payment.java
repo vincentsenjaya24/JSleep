@@ -26,17 +26,17 @@ public class Payment extends Invoice
         if (from.after(to)) {
             return false;
         }
-        else if(room.booked.isEmpty()){
+        else if(room.booked.isEmpty()) {
             room.booked.add(from);
             room.booked.add(to);
             return true;
         }
-        else if (availability(from, to, room)){
+        else if (availability(from, to, room)) {
             room.booked.add(from);
             room.booked.add(to);
             return true;
         }
-        else{
+        else {
             return false;
         }
     }
@@ -55,10 +55,13 @@ public class Payment extends Invoice
     }
     
     public static boolean availability(Date from, Date to, Room room){
-        if ((room.booked.get(0)).after(to) || (room.booked.get(1)).before(from)){
+        if ((room.booked.get(0)).after(to) || (room.booked.get(1)).before(from)) {
             return true;
         }
-        else{
+        else if ((room.booked.get(0)).equals(to)|| (room.booked.get(1)).equals(from)) {
+            return true;
+        }
+        else {
             return false;
         }
     }
