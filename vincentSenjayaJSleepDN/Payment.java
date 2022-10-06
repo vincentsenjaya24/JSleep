@@ -1,41 +1,65 @@
 package vincentSenjayaJSleepDN;
 import java.util.*;
 import java.text.*;
+import java.util.ArrayList;
 
 public class Payment extends Invoice
 {
-    public Calendar to;
-    public Calendar from;
+    public Date to;
+    public Date from;
     private int roomId;
    
-    public Payment(int id, int buyerId, int renterId, int roomId){
+    public Payment(int id, int buyerId, int renterId, int roomId, Date from, Date to){
         super(id, buyerId, renterId);
         this.roomId = roomId;
-        this.to = Calendar.getInstance();
-        this.to.add(Calendar.DATE,2);
-        this.from = Calendar.getInstance();
+        this.from = from;
+        this.to = to;
     }
     
-    public Payment(int id, Account buyer, Renter renter, int roomId){
+    public Payment(int id, Account buyer, Renter renter, int roomId, Date from, Date to){
         super(id, buyer, renter);
         this.roomId = roomId;
-        this.to = Calendar.getInstance();
-        this.to.add(Calendar.DATE,2);
-        this.from = Calendar.getInstance();
+        this.from = from;
+        this.to = to;
     }
-    public String getDuration(){
-        SimpleDateFormat SDformat = new SimpleDateFormat("d MMMMM yyyy");
-        return (SDformat.format(from.getTime()) + " - " + SDformat.format(to.getTime()));
+    public static boolean makeBooking(Date from, Date to, Room room){
+        if (from.after(to)) {
+            return false;
+        }
+        else if(room.booked.isEmpty()){
+            room.booked.add(from);
+            room.booked.add(to);
+            return true;
+        }
+        else if (availability(from, to, room)){
+            room.booked.add(from);
+            room.booked.add(to);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
+    
     public String getTime(){
         SimpleDateFormat SDformat = new SimpleDateFormat("d MMMMM yyyy");
         return ("Formatted Date: " + SDformat.format(from.getTime()));
     }
+    
     public String print(){
         return (String)( "Dari: " + from + "\nHingga: " + to + "\nRoom Id: " + roomId + "\nBuyer: " +buyer + "\nRenter: " + renter);
     }
     
     public int getRoomId(){
         return roomId;
+    }
+    
+    public static boolean availability(Date from, Date to, Room room){
+        if ((room.booked.get(0)).after(to) || (room.booked.get(1)).before(from)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

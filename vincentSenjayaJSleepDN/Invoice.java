@@ -5,7 +5,7 @@ public class Invoice extends Serializable
 {
    public int buyerId;
    public int renterId;
-   public Calendar time;
+   public Date time;
    public PaymentStatus status;
    public RoomRating rating;
    public Account buyer;
@@ -25,7 +25,7 @@ public class Invoice extends Serializable
        this.renterId = buyerId;
        this.rating = RoomRating.NONE;
        this.status = PaymentStatus.WAITING;
-       this.time = Calendar.getInstance();
+       this.time = new Date();
    }
    
    public Invoice(int id, Account buyer, Renter renter){
@@ -34,7 +34,7 @@ public class Invoice extends Serializable
        this.renter = renter;
        this.rating = RoomRating.NONE;
        this.status = PaymentStatus.WAITING;
-       this.time = Calendar.getInstance();
+       this.time = new Date();
    }
    
    public String print(){
