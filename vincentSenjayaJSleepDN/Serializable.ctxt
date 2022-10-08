@@ -1,6 +1,0 @@
-#BlueJ class context
-comment0.target=Serializable
-comment0.text=\ \r\n\ \ \ Class\ Serializable\ merupakan\ parent\ dari\ \ class\ Account,\ Room,\ Renter,\ Invoice\ dan\ Voucher\r\n\ \ \ @author\ VincentSenjaya\r\n\ \ \ \r\n
-comment1.params=id
-comment1.target=Serializable(int)
-numComments=2
