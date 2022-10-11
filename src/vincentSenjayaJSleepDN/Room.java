@@ -19,7 +19,7 @@ public class Room extends Serializable implements FileParser
         return false;
     }
     public Room(int id, String name, int size, Price price, Facility facility, City city, String address){
-        super(id);
+        super();
         this.name = name;
         this.price = price;
         this.size = size;
