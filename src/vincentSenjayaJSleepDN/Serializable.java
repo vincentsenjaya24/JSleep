@@ -2,37 +2,38 @@ package vincentSenjayaJSleepDN;
 
 import java.util.HashMap;
 
-/**
-   Class Serializable merupakan parent dari  class Account, Room, Renter, Invoice dan Voucher
-   @author VincentSenjaya
-   
-*/
-public class Serializable
-{
+public class Serializable {
     public final int id;
-    private static HashMap<Class<?>, Integer> mapCounter = new HashMap<>();
-    protected Serializable(){
+    private static HashMap<Class<?>, Integer> mapCounter = new HashMap<Class<?>, Integer>();
+
+    protected Serializable() {
         Integer counter = mapCounter.get(getClass());
-        counter = counter == null ? 0 : counter + 1;
+        if (counter == null){
+            counter =  0;
+        }
+        else{
+            counter +=1;
+        }
         mapCounter.put(getClass(), counter);
         this.id = counter;
     }
-    public static <T extends Serializable> Integer setClosingId(Class<T> class1, int id)
+
+    public static <T extends Serializable> Integer setClosingId(Class<T> clazz, int id) { return mapCounter.put(clazz, id); }
+
+    public static <T extends Serializable> Integer getClosingId(Class<T> clazz) { return mapCounter.get(clazz); }
+
+    public boolean equals(Object other)
     {
-        return mapCounter.put(class1, id);
-    }
-    public static <T extends Serializable> Integer getClosingId(Class<T> class1)
-    {
-        return mapCounter.get(class1);
-    }
-    public int compareTo(Serializable parameter){
-        return Integer.compare(parameter.id,this.id);
-    }
-    public boolean equals(Object objek){
-        return (objek instanceof Serializable && ((Serializable)objek).id == id);
+        return other instanceof Serializable && ((Serializable) other).id == id;
     }
 
-    public boolean equals(Serializable parameter){
-        return parameter.id == this.id;
+    public boolean equals(Serializable other)
+    {
+        return other.id == id;
+    }
+
+    public int compareTo(Serializable other)
+    {
+        return Integer.compare(this.id, other.id);
     }
 }

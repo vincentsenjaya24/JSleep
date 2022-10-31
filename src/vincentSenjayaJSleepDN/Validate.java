@@ -1,28 +1,24 @@
 package vincentSenjayaJSleepDN;
-import java.util.*;
 
+import java.util.ArrayList;
 
-public class Validate
-{
-    public Validate(){
-        
-    }
-    public static ArrayList filter(Price[] list, int value, boolean less){
-        ArrayList<Double> arrlist = new ArrayList<Double>();
-        if (less == true) {
-            for (int i = 0; i < list.length; i++){
-                if (list[i].price <= value){
-                    arrlist.add(list[i].price);
+public class Validate {
+    public static ArrayList filter (Price[] list, int value, boolean less){
+        ArrayList filteredPrice = new ArrayList();
+        if(less == true) {
+            for (Price iterator : list) {
+                if(iterator.price <= value){
+                    filteredPrice.add(iterator.price);
                 }
             }
         }
-        if (less == false) {
-            for (int i = 0; i < list.length; i++){
-                if (list[i].price > value){
-                    arrlist.add(list[i].price);
+        else{
+            for (Price iterator : list) {
+                if(iterator.price > value){
+                    filteredPrice.add(iterator.price);
                 }
             }
         }
-        return arrlist;
+        return filteredPrice;
     }
 }
