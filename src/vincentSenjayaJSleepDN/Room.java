@@ -1,25 +1,20 @@
 package vincentSenjayaJSleepDN;
 import java.util.*;
 
-public class Room extends Serializable implements FileParser
+public class Room extends Serializable
 {
+    public BedType bedType;
+    public int accountId;
+    public Facility facility;
+    public City city;
     public int size;
     public String name;
-    public Facility facility;
-    public Price price;
-    public String address;
-    public BedType bedType;
-    public City city;
     public ArrayList<Date> booked;
-    
-    public Object write(){
-        return 0;
-    }
-    public boolean read(String a){
-        return false;
-    }
-    public Room(int id, String name, int size, Price price, Facility facility, City city, String address){
-        super();
+    public String address;
+    public Price price;
+
+    public Room(int accountId, String name, int size, Price price, Facility facility, City city, String address){
+        this.accountId = accountId;
         this.name = name;
         this.price = price;
         this.size = size;

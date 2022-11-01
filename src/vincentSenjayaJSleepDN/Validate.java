@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Validate {
     public static ArrayList filter (Price[] list, int value, boolean less){
         ArrayList filteredPrice = new ArrayList();
-        if(less == true) {
+        if(less) {
             for (Price iterator : list) {
                 if(iterator.price <= value){
                     filteredPrice.add(iterator.price);

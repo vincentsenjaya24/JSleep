@@ -1,24 +1,12 @@
 package vincentSenjayaJSleepDN;
 
 
-/** 
-   Class Account merupakan subclass dari Serializable
-   @author VincentSenjaya
-   @param Parameter merupakan nama, email, dan password
-   
-*/
-public class Account extends Serializable implements FileParser
+
+public class Account extends Serializable
 {
     public String name;
     public String email;
     public String password;
-    
-    public Object write(){
-        return 0;
-    }
-    public boolean read(String a){
-        return false;
-    }
     
     public Account(String name, String email, String password){
         super();
@@ -28,6 +16,6 @@ public class Account extends Serializable implements FileParser
     }
     
     public String toString(){
-        return (String)("Name: " + name + "\nEmail: " + email + "\nPassword: " + password + "\nID: " + id);
+        return ("Name: " + name + "\nEmail: " + email + "\nPassword: " + password + "\nID: " + id);
     }
 }
