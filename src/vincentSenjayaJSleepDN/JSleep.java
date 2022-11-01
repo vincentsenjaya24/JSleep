@@ -23,7 +23,8 @@ public class JSleep
         try{
             String filepath = "C:\\Users\\vince\\Prak OOP\\ProyekOOP\\JSleep\\src\\json\\randomRoomList.json";
             JsonTable<Room> tableRoom = new JsonTable<>(Room.class, filepath);
-            List<Room> filterTableRoom = filterByCity(tableRoom,"jakarta",0,5);
+//            List<Room> filterTableRoom = filterByCity(tableRoom,"jakarta",0,5);
+            List<Room> filterTableRoom = filterByAccount(tableRoom,11,0,5);
             filterTableRoom.forEach(room -> System.out.println(room.toString()));
         }
         catch (Throwable t){
@@ -62,10 +63,10 @@ public class JSleep
     public static List<Room> filterByAccount(List<Room> room, int accountId, int page, int pageSize){
         List<Room> tempRoom = new ArrayList<>();
         for(Room each: room){
-            if (each.id == accountId){
+            if (each.accountId == accountId){
                 tempRoom.add(each);
             }
         }
-        return Algorithm.paginate(tempRoom, page, pageSize,pred -> pred.id == accountId);
+        return Algorithm.paginate(tempRoom, page, pageSize,pred -> pred.accountId == accountId);
     }
 }
