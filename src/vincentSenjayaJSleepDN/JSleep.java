@@ -1,12 +1,11 @@
 package vincentSenjayaJSleepDN;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import com.google.gson.*;
 
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import java.util.List;
 
 public class JSleep
 {
@@ -16,20 +15,46 @@ public class JSleep
 //        public List<String> listOfStates;
 //    }
     public static void main(String[] args){
-        Renter testRegex = new Renter("Netlab_","081234567890","Jl Margonda Raya");
-        Renter testRegexFail = new Renter("netlab","081","Jalan");
-        System.out.println(testRegex.validate());
-        System.out.println(testRegexFail.validate());
-        try{
-            String filepath = "C:\\Users\\vince\\Prak OOP\\ProyekOOP\\JSleep\\src\\json\\randomRoomList.json";
-            JsonTable<Room> tableRoom = new JsonTable<>(Room.class, filepath);
-//            List<Room> filterTableRoom = filterByCity(tableRoom,"jakarta",0,5);
-            List<Room> filterTableRoom = filterByAccount(tableRoom,11,0,5);
-            filterTableRoom.forEach(room -> System.out.println(room.toString()));
+        Account testAccountFail = new Account("vincent","vincent senjaya@ui.ac.id","BC123456");
+        Account testAccount = new Account("vincent","vincent.senjaya@ui.ac.id","aBC123456");
+        System.out.println(testAccountFail.validate());
+        System.out.println(testAccount.validate());
+        for (int i = 0; i < 10; i++){
+            ThreadingObject thread = new ThreadingObject("Thread " + i );
         }
-        catch (Throwable t){
-            t.printStackTrace();
-        }
+//        for (int i = 0; i < 10; i++){
+//            thread.run
+//        }
+//        try{
+////            String filepath = "C:\\Users\\vince\\Prak OOP\\ProyekOOP\\JSleep\\src\\json\\randomRoomList.json";
+//            String filepath = "C:\\Users\\vince\\Prak OOP\\ProyekOOP\\JSleep\\src\\json\\account.json";
+////            JsonTable<Account> tableAccount = new JsonTable<>(Account.class, filepath);
+//            File fileAccount = new File(filepath);
+//            if (fileAccount.createNewFile()) {
+//                System.out.println("File Created");
+//           }
+//            JsonTable<Account> tableAccount = new JsonTable<>(Account.class, filepath);
+//            Account writeAccount = new Account("name","email","password");
+//            JsonTable.writeJson(writeAccount,filepath);
+//
+//            for(Account a:tableAccount){
+//                System.out.println(a.toString());
+//            }
+////            List<Account> data = Arrays.asList(filepath);
+////            for (Account a: data){
+////                System.out.println(a);
+////            }
+//
+//
+////            JsonTable<Room> tableRoom = new JsonTable<>(Room.class, filepath);
+////            List<Room> filterTableRoom = filterByCity(tableRoom,"jakarta",0,5);
+////            List<Room> filterTableRoom = filterByAccountId(tableRoom,1,0,5);
+////            filterTableRoom.forEach(room -> System.out.println(room.toString()));
+//        }
+//        catch (IOException exception){
+//            System.out.println("An unexpected error is occured");
+//            exception.printStackTrace();
+//        }
     }
 
     public static Room createRoom(){
@@ -60,13 +85,14 @@ public class JSleep
         }
         return Algorithm.collect(tempRoom, byPrice);
     }
-    public static List<Room> filterByAccount(List<Room> room, int accountId, int page, int pageSize){
+    public static List<Room> filterByAccountId(List<Room> room, int accountId, int page, int pageSize){
         List<Room> tempRoom = new ArrayList<>();
         for(Room each: room){
             if (each.accountId == accountId){
                 tempRoom.add(each);
             }
         }
+
         return Algorithm.paginate(tempRoom, page, pageSize,pred -> pred.accountId == accountId);
     }
 }
