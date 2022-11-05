@@ -1,8 +1,16 @@
 package vincentSenjayaJSleepDN;
 
 
+import com.google.gson.Gson;
+import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
+
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.sql.Array;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -19,44 +27,23 @@ public class JSleep
         Account testAccount = new Account("vincent","vincent.senjaya@ui.ac.id","aBC123456");
         System.out.println(testAccountFail.validate());
         System.out.println(testAccount.validate());
-        for (int i = 0; i < 10; i++){
-            ThreadingObject thread = new ThreadingObject("Thread " + i );
+        for(int i = 0 ; i < 10 ; i++){
+            ThreadingObject thread = new ThreadingObject("Thread"+i);
+            thread.start();
         }
-//        for (int i = 0; i < 10; i++){
-//            thread.run
-//        }
-//        try{
-////            String filepath = "C:\\Users\\vince\\Prak OOP\\ProyekOOP\\JSleep\\src\\json\\randomRoomList.json";
-//            String filepath = "C:\\Users\\vince\\Prak OOP\\ProyekOOP\\JSleep\\src\\json\\account.json";
-////            JsonTable<Account> tableAccount = new JsonTable<>(Account.class, filepath);
-//            File fileAccount = new File(filepath);
-//            if (fileAccount.createNewFile()) {
-//                System.out.println("File Created");
-//           }
-//            JsonTable<Account> tableAccount = new JsonTable<>(Account.class, filepath);
-//            Account writeAccount = new Account("name","email","password");
-//            JsonTable.writeJson(writeAccount,filepath);
-//
-//            for(Account a:tableAccount){
-//                System.out.println(a.toString());
-//            }
-////            List<Account> data = Arrays.asList(filepath);
-////            for (Account a: data){
-////                System.out.println(a);
-////            }
-//
-//
-////            JsonTable<Room> tableRoom = new JsonTable<>(Room.class, filepath);
-////            List<Room> filterTableRoom = filterByCity(tableRoom,"jakarta",0,5);
-////            List<Room> filterTableRoom = filterByAccountId(tableRoom,1,0,5);
-////            filterTableRoom.forEach(room -> System.out.println(room.toString()));
-//        }
-//        catch (IOException exception){
-//            System.out.println("An unexpected error is occured");
-//            exception.printStackTrace();
-//        }
-    }
 
+        try{
+            String filepath = "C:\\Users\\vince\\Prak OOP\\ProyekOOP\\JSleep\\src\\json\\account.json";
+            JsonTable<Account> tableAccount = new JsonTable<>(Account.class, filepath);
+            tableAccount.add(new Account("name","email","password"));
+            tableAccount.writeJson();
+            tableAccount = new JsonTable<>(Account.class, filepath);
+            tableAccount.forEach(account -> System.out.println(account.toString()));
+        }
+        catch(Throwable t){
+            t.printStackTrace();
+        }
+    }
     public static Room createRoom(){
         Price price = new Price(100000,5);
         Room room = new Room(1, "hotel", 30, price, Facility.AC, City.SURABAYA, "Jalan Sutomo");
@@ -92,7 +79,6 @@ public class JSleep
                 tempRoom.add(each);
             }
         }
-
         return Algorithm.paginate(tempRoom, page, pageSize,pred -> pred.accountId == accountId);
     }
 }

@@ -2,10 +2,10 @@ package vincentSenjayaJSleepDN;
 
 public class ThreadingObject extends Thread {
     public ThreadingObject(String name){
-        super(name);
-        Thread thread = new Thread();
+
+        this.setName(name);
     }
-    public void run(){
-        System.out.println("Nama Thread: " + super.getName() + "ID Thread:" + super.getId());
+    @Override public void run(){
+        System.out.println("Nama Thread: " + Thread.currentThread().getName() + " ID Thread: " + Thread.currentThread().getId());
     }
 }
