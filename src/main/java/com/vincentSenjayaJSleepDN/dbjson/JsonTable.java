@@ -1,4 +1,4 @@
-package com.vincentSenjayaJSleepDN;
+package com.vincentSenjayaJSleepDN.dbjson;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;

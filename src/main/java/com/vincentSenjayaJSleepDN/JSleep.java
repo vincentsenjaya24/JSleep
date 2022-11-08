@@ -1,50 +1,20 @@
 package com.vincentSenjayaJSleepDN;
 
 
-import com.google.gson.Gson;
-import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.vincentSenjayaJSleepDN.dbjson.JsonDBEngine;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication public class JSleep
 {
-//    class Country{
-//        public String name;
-//        public int population;
-//        public List<String> listOfStates;
-//    }
+
     public static void main(String[] args){
-//        Account testAccountFail = new Account("vincent","vincent senjaya@ui.ac.id","BC123456");
-//        Account testAccount = new Account("vincent","vincent.senjaya@ui.ac.id","aBC123456");
-//        System.out.println(testAccountFail.validate());
-//        System.out.println(testAccount.validate());
-//        for(int i = 0 ; i < 10 ; i++){
-//            ThreadingObject thread = new ThreadingObject("Thread"+i);
-//            thread.start();
-//        }
-//
-//        try{
-//            String filepath = "C:\\Users\\vince\\Prak OOP\\ProyekOOP\\JSleep\\src\\json\\account.json";
-//            JsonTable<Account> tableAccount = new JsonTable<>(Account.class, filepath);
-//            tableAccount.add(new Account("name","email","password"));
-//            tableAccount.writeJson();
-//            tableAccount = new JsonTable<>(Account.class, filepath);
-//            tableAccount.forEach(account -> System.out.println(account.toString()));
-//        }
-//        catch(Throwable t){
-//            t.printStackTrace();
-//        }
+        JsonDBEngine.Run(JSleep.class);
         SpringApplication.run(JSleep.class, args);
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> JsonDBEngine.join()));
     }
     public static Room createRoom(){
         Price price = new Price(100000,5);

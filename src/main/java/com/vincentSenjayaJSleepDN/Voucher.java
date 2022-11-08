@@ -1,6 +1,8 @@
 package com.vincentSenjayaJSleepDN;
 
 
+import com.vincentSenjayaJSleepDN.dbjson.Serializable;
+
 public class Voucher extends Serializable
 {
    public Type type;

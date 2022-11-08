@@ -1,6 +1,7 @@
 package com.vincentSenjayaJSleepDN;
 
 
+import com.vincentSenjayaJSleepDN.dbjson.Serializable;
 
 public class Complaint extends Serializable
 {

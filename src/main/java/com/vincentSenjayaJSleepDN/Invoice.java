@@ -1,4 +1,6 @@
 package com.vincentSenjayaJSleepDN;
+import com.vincentSenjayaJSleepDN.dbjson.Serializable;
+
 import java.util.*;
 
 public class Invoice extends Serializable
