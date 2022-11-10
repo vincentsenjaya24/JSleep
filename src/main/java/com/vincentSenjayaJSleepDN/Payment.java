@@ -6,33 +6,30 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+
 public class Payment extends Invoice {
 
     private int roomId;
     public Date from;
     public Date to;
 
-
-
-    public Payment(int buyerId, int renterId, int roomId, Date from, Date to) {
+    public Payment(int buyerId, int renterId, int roomId) {
         super(buyerId, renterId);
         this.roomId = roomId;
-        this.from = from;
-        this.to = to;
+
     }
 
-    public Payment(Account buyer, Renter renter, int roomId, Date from, Date to) {
+    public Payment(Account buyer, Renter renter, int roomId) {
         super(buyer, renter);
         this.roomId = roomId;
-        this.from = from;
-        this.to = to;
+
     }
 
     public int getRoomId() {
         return roomId;
     }
 
-    public static boolean makeBooking(Date from,Date to,Room room){
+    public static boolean makeBooking(Date from, Date to, Room room){
         if(availability(from, to, room)){
             Calendar start = Calendar.getInstance();
             start.setTime(from);
@@ -61,13 +58,6 @@ public class Payment extends Invoice {
         }
         return true;
     }
-
-    public String getTime(){
-        SimpleDateFormat SDFormat = new SimpleDateFormat("'Formatted Date' = dd MMMM yyyy");
-        String currTime = SDFormat.format(time.getTime());
-        return currTime;
-    }
-
     @Override
     public String print(){
         return "Payment{" +

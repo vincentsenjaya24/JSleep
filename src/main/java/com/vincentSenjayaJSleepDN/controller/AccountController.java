@@ -4,7 +4,12 @@ import com.vincentSenjayaJSleepDN.Account;
 import com.vincentSenjayaJSleepDN.Renter;
 import com.vincentSenjayaJSleepDN.dbjson.JsonAutowired;
 import com.vincentSenjayaJSleepDN.dbjson.JsonTable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -23,6 +28,18 @@ public class AccountController implements BasicGetController<Account>
     }
     @PostMapping("/login")
     Account login(@RequestParam String email, @RequestParam String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(password.getBytes());
+            byte[] bytes = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < bytes.length; i++) {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            password = sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
         for (Account data : accountTable) {
             if (data.email.equals(email) && data.password.equals(password)) {
                 return data;
@@ -30,10 +47,27 @@ public class AccountController implements BasicGetController<Account>
         }
         return null;
     }
+
+
+
     @PostMapping("/register")
+    @ResponseBody
     Account register(@RequestParam String name, @RequestParam String email, @RequestParam String password) {
+
         boolean cekEmail = REGEX_PATTERN_EMAIL.matcher(email).find();
         boolean cekPassword = REGEX_PATTERN_PASSWORD.matcher(password).find();
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(password.getBytes());
+            byte[] bytes = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < bytes.length; i++) {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            password = sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
         if (!name.isBlank() && cekEmail && cekPassword
                 && !accountTable.stream().anyMatch(account -> account.email.equals(email))) {
             Account account = new Account(name, email, password);
