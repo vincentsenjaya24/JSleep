@@ -1,5 +1,10 @@
 package com.vincentSenjayaJSleepDN;
-
+/**
+ * Class untuk penerapan multi-threading
+ * @author Vincent Senjaya
+ * @version 1.0
+ * @since 11 Desember 2021
+ */
 public class ThreadingObject extends Thread {
     public ThreadingObject(String name){
 

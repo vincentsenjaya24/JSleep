@@ -19,7 +19,7 @@ public class Renter extends Serializable
     public static final String REGEX_PHONE = "^(\\d{9,12})$";
     public static final String REGEX_NAME = "^(?=^[A-Z])(?![A-Z a-z]{20,})((?=[A-Z a-z]{4,}).)((?!\\s{2}).)*$";
 
-    public Renter(String username, String phoneNumber, String address){
+    public Renter(String username, String address, String phoneNumber){
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.username = username;

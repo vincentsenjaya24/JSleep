@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/room")
 public class RoomController implements BasicGetController<Room>{
-    @JsonAutowired(filepath = "room.json", value = Room.class)
+    @JsonAutowired(filepath = "C:\\Users\\vince\\Prak OOP\\ProyekOOP\\JSleep\\src\\main\\java\\com\\json\\room.json", value = Room.class)
 
     public static JsonTable<Room> roomTable;
     public RoomController(){
@@ -20,7 +20,11 @@ public class RoomController implements BasicGetController<Room>{
     public JsonTable<Room> getJsonTable(){
         return roomTable;
     }
-
+//    @GetMapping("/getAllRoom")
+//    @ResponseBody
+//    List<Room> getAllRoom(@RequestParam int page, @RequestParam int pageSize){
+//        return Algorithm.paginate(roomTable, page, pageSize);
+//    }
     @GetMapping("/{id}/renter")
     @ResponseBody
     List<Room> getRoomByRenter(@RequestParam int id, @RequestParam int page, @RequestParam int pageSize){
@@ -29,12 +33,12 @@ public class RoomController implements BasicGetController<Room>{
 
     @PostMapping("/{id}/create")
     @ResponseBody
-    public Room create(@RequestParam int accountId, @RequestParam String name, @RequestParam int size,
+    public Room create(@PathVariable int id, @RequestParam String name, @RequestParam int size,
                        @RequestParam int price, @RequestParam Facility facility, @RequestParam City city,
                        @RequestParam String address){
         for (Room each : roomTable) {
-            if (each != null && each.accountId == accountId) {
-                Room room = new Room(accountId, name, size, new Price(price), facility, city, address);
+            if (each != null && each.accountId == id) {
+                Room room = new Room(id, name, size, new Price(price), facility, city, address);
                 roomTable.add(room);
                 return room;
             }

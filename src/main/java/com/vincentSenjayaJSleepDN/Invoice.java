@@ -2,7 +2,12 @@ package com.vincentSenjayaJSleepDN;
 import com.vincentSenjayaJSleepDN.dbjson.Serializable;
 
 import java.util.*;
-
+/**
+ * Class Invoice berisi status dan rating terhadap kamar
+ * @author Vincent Senjaya
+ * @version 1.0
+ * @since 11 Desember 2021
+ */
 public class Invoice extends Serializable
 {
    public int buyerId;

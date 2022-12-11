@@ -1,5 +1,11 @@
 package com.vincentSenjayaJSleepDN;
 
+/**
+ * Class Rating berisi rating room
+ * @author Vincent Senjaya
+ * @version 1.0
+ * @since 11 Desember 2021
+ */
 public class Rating
 {
  

@@ -2,7 +2,12 @@ package com.vincentSenjayaJSleepDN;
 import com.vincentSenjayaJSleepDN.dbjson.Serializable;
 
 import java.util.*;
-
+/**
+ * Class Room berisikan data dari tiap room yang dibuat
+ * @author Vincent Senjaya
+ * @version 1.0
+ * @since 11 Desember 2021
+ */
 public class Room extends Serializable
 {
     public BedType bedType;

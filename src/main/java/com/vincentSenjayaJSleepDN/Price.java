@@ -1,5 +1,10 @@
 package com.vincentSenjayaJSleepDN;
-
+/**
+ * Class Price berisi informasi mengenai harga
+ * @author Vincent Senjaya
+ * @version 1.0
+ * @since 11 Desember 2021
+ */
 
 public class Price
 {

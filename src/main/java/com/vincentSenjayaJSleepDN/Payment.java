@@ -5,14 +5,24 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
+/**
+ * Class Payment berisi proses pembayaran produk
+ * @author Vincent Senjaya
+ * @version 1.0
+ * @since 11 Desember 2021
+ */
 
 public class Payment extends Invoice {
 
     private int roomId;
     public Date from;
     public Date to;
-
+    /**
+     * Constructor Payment untuk inisialisasi pembelian produk
+     * @param buyerId id customer
+     * @param renterId id renter yang menyewakan
+     * @param roomId id room yang ada
+     */
     public Payment(int buyerId, int renterId, int roomId) {
         super(buyerId, renterId);
         this.roomId = roomId;
@@ -30,17 +40,7 @@ public class Payment extends Invoice {
     }
 
     public static boolean makeBooking(Date from, Date to, Room room){
-        if(availability(from, to, room)){
-            Calendar start = Calendar.getInstance();
-            start.setTime(from);
-            Calendar end = Calendar.getInstance();
-            end.setTime(to);
-            for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1), date = start.getTime()) {
-                room.booked.add(date);
-            }
-            return true;
-        }
-        return false;
+        return availability(from, to, room);
     }
 
     public static boolean availability(Date from,Date to,Room room){

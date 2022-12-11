@@ -4,16 +4,17 @@ import com.vincentSenjayaJSleepDN.dbjson.JsonTable;
 import com.vincentSenjayaJSleepDN.dbjson.JsonAutowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/payment")
 public class PaymentController implements BasicGetController<Payment> {
 
-    @JsonAutowired(value = Payment.class, filepath = "payment.json")
+    @JsonAutowired(value = Payment.class, filepath = "C:\\Users\\vince\\Prak OOP\\ProyekOOP\\JSleep\\src\\main\\java\\com\\json\\payment.json")
     public static JsonTable<Payment> paymentTable;
     @Override
     @GetMapping("/getPaymentTable")
@@ -48,8 +49,6 @@ public class PaymentController implements BasicGetController<Payment> {
         return false;
     }
 
-
-
     @PostMapping("/create")
     @ResponseBody
     Payment create(@RequestParam int buyerId, @RequestParam int renterId, @RequestParam int roomId,
@@ -59,6 +58,7 @@ public class PaymentController implements BasicGetController<Payment> {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date toDate = sdf.parse(to);
         Date fromDate = sdf.parse(from);
+
         if (room1 != null && account1 != null && Payment.availability(fromDate, toDate, room1)) {
             if (room1.price.price > account1.balance ) {
                 return null;
@@ -68,9 +68,10 @@ public class PaymentController implements BasicGetController<Payment> {
                 Invoice invoice = new Invoice(account1,account1.renter);
                 invoice.status = Invoice.PaymentStatus.WAITING;
                 paymentTable.add(payment);
-                if (payment.makeBooking(fromDate, toDate, room1)){
-                    return payment;
-                }
+                return payment;
+//                if (Payment.makeBooking(fromDate, toDate, room1)){
+//                    return payment;
+//                }
             }
         }
         return null;

@@ -9,6 +9,13 @@ import com.vincentSenjayaJSleepDN.dbjson.JsonDBEngine;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
+/**
+ * Driver class dari project JSleep
+ * @author Vincent Senjaya
+ * @version 1.0
+ * @since 11 Desember 2021
+ */
 @SpringBootApplication public class JSleep
 {
 
